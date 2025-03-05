@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Static Chart Example</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f8f8f8;
+    }
+    .chart-container {
+      width: 100%;
+      max-width: 700px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 20px;
+      text-align: center;
+    }
+    .chart-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .chart-image {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      margin-bottom: 15px;
+    }
+    .chart-footer {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 15px;
+    }
+    .view-interactive {
+      display: inline-block;
+      background-color: #4caf50;
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-weight: 500;
+      margin-top: 10px;
+      transition: background-color 0.2s;
+    }
+    .view-interactive:hover {
+      background-color: #45a049;
+    }
+    .bar {
+      height: 40px;
+      margin: 5px 0;
+      background: linear-gradient(to right, rgba(75, 192, 192, 0.8), rgba(75, 192, 192, 0.2));
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 15px;
+      color: white;
+      font-weight: 500;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .bar-label {
+      color: #333;
+      flex: 0 0 50px;
+    }
+    .bar-container {
+      flex: 1;
+      margin: 0 10px;
+    }
+    .bar-value {
+      color: #333;
+      flex: 0 0 80px;
+      text-align: right;
+    }
+    .chart-grid {
+      display: flex;
+      flex-direction: column;
+      margin: 30px 0;
+    }
+    .row {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="chart-container">
+    <div class="chart-title">Monthly Website Visitors (2024)</div>
+    
+    <div class="chart-grid">
+      <!-- Manually created bars to look like a chart -->
+      <div class="row">
+        <div class="bar-label">Jan</div>
+        <div class="bar-container">
+          <div class="bar" style="width: 32%;">1,250</div>
+        </div>
+        <div class="bar-value">1,250</div>
+      </div>
+      <div class="row">
+        <div class="bar-label">Feb</div>
+        <div class="bar-container">
+          <div class="bar" style="width: 37%;">1,420</div>
+        </div>
+        <div class="bar-value">1,420</div>
+      </div>
+      <div class="row">
+        <div class="bar-label">Mar</div>
+        <div class="bar-container">
+          <div class="bar" style="width: 41%;">1,570</div>
+        </div>
+        <div class="bar-value">1,570</div>
+      </div>
+      <div class="row">
+        <div class="bar-label">Apr</div>
+        <div class="bar-container">
+          <div class="bar" style="width: 48%;">1,830</div>
+        </div>
+        <div class="bar-value">1,830</div>
+      </div>
+      <div class="row">
+        <div class="bar-label">May</div>
+        <div class="bar-container">
+          <div class="bar" style="width: 56%;">2,150</div>
+        </div>
+        <div class="bar-value">2,150</div>
+      </div>
+      <div class="row">
+        <div class="bar-label">Jun</div>
+        <div class="bar-container">
+          <div class="bar" style="width: 65%;">2,480</div>
+        </div>
+        <div class="bar-value">2,480</div>
+      </div>
+      <div class="row">
+        <div class="bar-label">Jul</div>
+        <div class="bar-container">
+          <div class="bar" style="width: 71%;">2,710</div>
+        </div>
+        <div class="bar-value">2,710</div>
+      </div>
+      <div class="row">
+        <div class="bar-label">Aug</div>
+        <div class="bar-container">
+          <div class="bar" style="width: 80%;">3,050</div>
+        </div>
+        <div class="bar-value">3,050</div>
+      </div>
+      <div class="row">
+        <div class="bar-label">Sep</div>
+        <div class="bar-container">
+          <div class="bar" style="width: 89%;">3,410</div>
+        </div>
+        <div class="bar-value">3,410</div>
+      </div>
+      <div class="row">
+        <div class="bar-label">Oct</div>
+        <div class="bar-container">
+          <div class="bar" style="width: 100%;">3,820</div>
+        </div>
+        <div class="bar-value">3,820</div>
+      </div>
+    </div>
+    
+    <div class="chart-footer">Monthly website visitors showing steady growth in 2024</div>
+    
+    <a href="https://waelgara97.github.io/substack-chart-demo/" class="view-interactive" target="_blank">View Interactive Version</a>
+  </div>
+</body>
+</html>

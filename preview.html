@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Website Visitors Chart - 2024 Growth Data</title>
+  <meta property="og:title" content="Website Visitors Growth Chart (2024)" />
+  <meta property="og:description" content="Interactive data visualization showing monthly website visitor trends with 304% growth from January to October 2024" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://waelgara97.github.io/substack-chart-demo/preview.html" />
+  <meta property="og:image" content="https://opengraph.githubassets.com/1/waelgara97/substack-chart-demo" />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f8f8f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .preview-container {
+      width: 1200px;
+      height: 630px;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      padding: 40px;
+      box-sizing: border-box;
+      position: relative;
+      overflow: hidden;
+    }
+    .title {
+      font-size: 48px;
+      font-weight: 800;
+      color: #333;
+      margin-bottom: 30px;
+      text-align: center;
+      z-index: 2;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .chart {
+      width: 100%;
+      max-width: 900px;
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+      z-index: 2;
+    }
+    .bar {
+      height: 40px;
+      margin: 12px 0;
+      background: linear-gradient(to right, rgba(75, 192, 192, 0.9), rgba(75, 192, 192, 0.4));
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      color: white;
+      font-weight: 600;
+      font-size: 18px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    .bar::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.1) 100%);
+      transform: translateX(-100%);
+      animation: shine 3s infinite;
+    }
+    @keyframes shine {
+      100% { transform: translateX(100%); }
+    }
+    .bar-label {
+      color: white;
+      font-size: 20px;
+      font-weight: 700;
+    }
+    .bar-value {
+      color: white;
+      font-size: 20px;
+      font-weight: 700;
+    }
+    .footer {
+      margin-top: 30px;
+      font-size: 20px;
+      color: #555;
+      text-align: center;
+      z-index: 2;
+    }
+    .growth {
+      position: absolute;
+      top: 20px;
+      right: 40px;
+      background: #ff6b6b;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 24px;
+      box-shadow: 0 4px 10px rgba(255,107,107,0.4);
+      transform: rotate(5deg);
+      z-index: 3;
+    }
+    .pattern {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(circle at 10% 20%, rgba(255,255,255,0.2) 0%, transparent 20%);
+      background-size: 60px 60px;
+      z-index: 1;
+    }
+    .month-grid {
+      display: flex;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    .month {
+      flex: 1;
+      text-align: center;
+      font-weight: 600;
+      color: #666;
+      font-size: 16px;
+    }
+    .bar-container {
+      position: relative;
+      height: 350px;
+      width: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-around;
+      border-bottom: 2px solid #ddd;
+      border-left: 2px solid #ddd;
+      padding-top: 20px;
+    }
+    .bar-column {
+      width: 40px;
+      background: linear-gradient(to top, rgba(75, 192, 192, 0.9), rgba(75, 192, 192, 0.4));
+      border-radius: 6px 6px 0 0;
+      position: relative;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .bar-value-top {
+      position: absolute;
+      top: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #333;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .horizontal-lines {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+    .h-line {
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      background-color: rgba(0,0,0,0.07);
+    }
+    .y-axis-label {
+      position: absolute;
+      left: -50px;
+      color: #999;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="preview-container">
+    <div class="pattern"></div>
+    <div class="growth">+304% Growth</div>
+    <h1 class="title">Monthly Website Visitors (2024)</h1>
+    
+    <div class="chart">
+      <div class="bar-container">
+        <div class="horizontal-lines">
+          <div class="h-line" style="bottom: 20%;"><span class="y-axis-label">1k</span></div>
+          <div class="h-line" style="bottom: 40%;"><span class="y-axis-label">2k</span></div>
+          <div class="h-line" style="bottom: 60%;"><span class="y-axis-label">3k</span></div>
+          <div class="h-line" style="bottom: 80%;"><span class="y-axis-label">4k</span></div>
+        </div>
+        
+        <div class="bar-column" style="height: 33%;">
+          <span class="bar-value-top">1,250</span>
+        </div>
+        <div class="bar-column" style="height: 37%;">
+          <span class="bar-value-top">1,420</span>
+        </div>
+        <div class="bar-column" style="height: 41%;">
+          <span class="bar-value-top">1,570</span>
+        </div>
+        <div class="bar-column" style="height: 48%;">
+          <span class="bar-value-top">1,830</span>
+        </div>
+        <div class="bar-column" style="height: 56%;">
+          <span class="bar-value-top">2,150</span>
+        </div>
+        <div class="bar-column" style="height: 65%;">
+          <span class="bar-value-top">2,480</span>
+        </div>
+        <div class="bar-column" style="height: 71%;">
+          <span class="bar-value-top">2,710</span>
+        </div>
+        <div class="bar-column" style="height: 80%;">
+          <span class="bar-value-top">3,050</span>
+        </div>
+        <div class="bar-column" style="height: 89%;">
+          <span class="bar-value-top">3,410</span>
+        </div>
+        <div class="bar-column" style="height: 100%;">
+          <span class="bar-value-top">3,820</span>
+        </div>
+      </div>
+      
+      <div class="month-grid">
+        <div class="month">Jan</div>
+        <div class="month">Feb</div>
+        <div class="month">Mar</div>
+        <div class="month">Apr</div>
+        <div class="month">May</div>
+        <div class="month">Jun</div>
+        <div class="month">Jul</div>
+        <div class="month">Aug</div>
+        <div class="month">Sep</div>
+        <div class="month">Oct</div>
+      </div>
+    </div>
+    
+    <div class="footer">Consistent growth from 1,250 to 3,820 monthly visitors</div>
+  </div>
+</body>
+</html>
